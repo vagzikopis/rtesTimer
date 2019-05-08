@@ -95,7 +95,7 @@ int main(){
 	dup2(fd, STDOUT_FILENO);
 	close(fd);*/ 
 	printf("Total Sampling Time: %f\n", alarm_time);
-	printf("Interval Time: %f\n", sleep_time);
+	printf("Interval Time: %f\n\n", sleep_time);
 	for(int j=1; j<i; j++){
 		temp = (table[j].tv_sec - table[j-1].tv_sec)+0.000001*(table[j].tv_usec - table[j-1].tv_usec);
 		printf("%f\n",temp);
