@@ -42,8 +42,10 @@ static void alarm_handler(int sig){
 int main(){
 
 	float alarm_time, temp;
-	int  size, fd, total_time, alarm_sec;
-	char filename[] = "data/no_timestamps";
+	int  size, total_time, alarm_sec;
+	// uncomment filename variable and enter your path to save data //
+	/*char filename[] = "data/final_timestamps";					
+	int fd;*/
 	printf("Enter total sampling time: ");
 	scanf("%d", &total_time);
 	printf("Enter interval time: ");

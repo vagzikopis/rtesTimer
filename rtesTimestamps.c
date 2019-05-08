@@ -32,9 +32,10 @@ static void alarm_handler(int sig){
 int main(){
 	struct timeval tv;
 	float alarm_time, sleep_time, temp, dec;
-	int alarm_sec, sleep_sec, sleep_usec, size, fd;
-	char filename[] = "data/final_timestamps";
-
+	int alarm_sec, sleep_sec, sleep_usec, size;
+// uncomment filename and fd variable and enter your path to save data //
+	/*char filename[] = "data/final_timestamps";					
+	int fd;*/
 	printf("Enter total sampling time: ");
 	scanf("%f", &alarm_time);
 	printf("Enter interval time: ");
