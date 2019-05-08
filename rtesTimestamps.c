@@ -82,7 +82,9 @@ int main(){
 		if (i>0){
 			sum = sum + ((table[i].tv_sec - table[i-1].tv_sec)+0.000001*(table[i].tv_usec - table[i-1].tv_usec) - 0.1);
 			temp = (sum / i); // calculate average error //
-			shift = (int)(temp*1000000);
+			if (sleep_usec > 0){
+				shift = (int)(temp*1000000);
+			}
 		}
 		sleep_usec = fixed - shift; // dynamically change usleep // 
 		i++;
