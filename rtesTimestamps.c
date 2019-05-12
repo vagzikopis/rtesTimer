@@ -1,6 +1,6 @@
 
 										
-//			RTES-ASSIGNEMENT1		  //
+// RTES-ASSIGNEMENT1 //
 // Author Zikopis Evangelos AEM: 8808 //
 
 #include <stdio.h>
@@ -33,9 +33,12 @@ int main(){
 	struct timeval tv;
 	float alarm_time, sleep_time, temp, dec;
 	int alarm_sec, sleep_sec, sleep_usec, size;
-// uncomment filename and fd variable and enter your path to save data //
+	// uncomment filename and fd variable and enter your path to save data //
+	
 	/*char filename[] = "data/final_timestamps";					
 	int fd;*/
+	
+	// Get input from user //
 	printf("Enter total sampling time: ");
 	scanf("%f", &alarm_time);
 	printf("Enter interval time: ");
@@ -49,7 +52,7 @@ int main(){
 		size++;
 	}
 	struct timeval table[size];
-
+	// Brake time in seconds and useconds //
 	alarm_sec = (int)(alarm_time);
 	temp =(alarm_time-alarm_sec)*1000000;
 	alarm_usec = (int)temp;
@@ -62,9 +65,9 @@ int main(){
 	printf("Alarm useconds: %d\n", alarm_usec);
 	printf("Sleep seconds: %d\n", sleep_sec);
 	printf("Sleep useconds: %d\n\n", sleep_usec);
-	
+	// Set "alarm_handler" as handler function //
 	signal(SIGALRM, alarm_handler);
-
+	// Set an alarm for the whole sampling time //
 	if (alarm_sec != 0){
 		alarm(alarm_sec);
 	} else {
@@ -75,7 +78,7 @@ int main(){
 	int i = 0;
 	float sum = 0;
 	temp = 0;
-	while(flag){
+	while(flag){ // Break when the alarm changes flag value // 
 		gettimeofday(&tv, NULL);
 		table[i].tv_sec = tv.tv_sec;
 		table[i].tv_usec = tv.tv_usec;
