@@ -1,7 +1,7 @@
 						
-//			RTES-ASSIGNEMENT1		  //
+// RTES-ASSIGNEMENT1 //
 // Author Zikopis Evangelos AEM: 8808 //
-
+// Simple Implemantation with alarms //
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -44,13 +44,17 @@ int main(){
 	float alarm_time, temp;
 	int  size, total_time, alarm_sec;
 	// uncomment filename variable and enter your path to save data //
+	
 	/*char filename[] = "data/final_timestamps";					
 	int fd;*/
+	
+	// Get input from user // 
 	printf("Enter total sampling time: ");
 	scanf("%d", &total_time);
 	printf("Enter interval time: ");
 	scanf("%f", &alarm_time);
-
+	
+	// Break times in second and useconds //
 	if (alarm_time >= 1){
 		alarm_sec = (int)(alarm_time);
 		alarm_usec = (int)((alarm_time - alarm_sec)*1000000);
@@ -59,11 +63,11 @@ int main(){
 		alarm_usec = (int)((alarm_time)*1000000);
 		signal(SIGALRM, ualarm_handler);
 	}
-
+	
 	size = (int)(total_time / alarm_time)+1;
-	printf("size:%d\n", size); 
+	 
 	struct timeval table[size+1];
-
+	// Get the first value //
 	gettimeofday(&tv, NULL);
 	table[0].tv_sec = tv.tv_sec;
 	table[0].tv_usec = tv.tv_usec;
@@ -73,7 +77,7 @@ int main(){
 	}else{
 		alarm(alarm_sec);
 	}
-	while(i<(size)){
+	while(i<(size)){ // Loop until you get the values that you want //
 		while(flag){
 			table[i].tv_sec = timestamp_sec;
 			table[i].tv_usec = timestamp_usec;
@@ -89,7 +93,7 @@ int main(){
 		}
 	}
 
-// Optional step, used to save data to a txt file //
+// Optional step, used in order to save data to a txt file //
 /*	fd = creat(filename, 0644);	 
 	dup2(fd, STDOUT_FILENO);
 	close(fd);*/ 
