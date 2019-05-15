@@ -11,6 +11,7 @@
 #include <sys/signal.h>
 #include <fcntl.h> 
 #include <math.h>
+#include <sys/time.h>
 
 int alarm_usec;
 int flag = 1;
